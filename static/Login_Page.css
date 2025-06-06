@@ -1,0 +1,208 @@
+body {
+    background: linear-gradient(135deg, #8ac2fa 0%, #e3f0ff 100%);
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_Login_page {
+    background: white;
+    max-width: 900px;     
+    min-height: 400px;     
+    width: 100%;
+    padding: 36px 32px 28px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+label {
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: black;
+    margin-top: 12px;
+}
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cfd8dc;
+    border-radius: 6px;
+    background: whitesmoke;
+    font-size: 1rem;
+    transition: border 0.2s;
+    box-sizing: border-box;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ff9800;
+    outline: none;
+    background: lightgray;
+}
+button[type="submit"] {
+    width: 100%;
+    background: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 18px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+}
+button[type="submit"]:hover {
+    background: #e65100;
+    box-shadow: 0 4px 16px rgba(255, 152, 0, 0.25);
+}
+.login-title{  
+    font-size: 30px;
+    font-weight:bolder;
+    color: black;
+    margin-bottom: 16px;
+
+}
+.login-title-with-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+  gap: 16px;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.logo-circle-rotate {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-circle-rotate::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  border: 6.67px solid transparent;
+  border-top: 6.67px solid #d65933;   
+  border-right: 6.67px solid #ff7043;  
+  border-bottom: 6.67px solid #ffb300;  
+  border-left: 6.67px solid #ffc745;   
+  animation: rotateCircle 1.2s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rotateCircle {
+  100% { transform: rotate(360deg); }
+}
+
+.login-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+  background: #fff;
+}
+
+.login-title-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff9800;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.login-flex-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 320px;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.gif-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 540px;
+    padding-right: 15px;
+  
+}
+
+.login-gif {
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.form-side {
+    flex: 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-btn {
+    width: 100%;
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 18px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+}
+.display-btn:hover {
+    background: #1976D2;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.25);
+}
+
+@media (max-width: 600px) {
+    .container_Login_page {
+        max-width: 98vw;
+        padding: 18px 6vw 18px 6vw;
+    }
+    label {
+        font-size: 1rem;
+    }
+    input, button {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 700px) {
+    .login-flex-wrapper {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .gif-side, .form-side {
+        padding: 0;
+        min-width: 0;
+    }
+    .login-gif {
+        max-width: 90vw;
+        max-height: 120px;
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eligible Students for {{ company_name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Company.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Human_Resource.css') }}">
+</head>
+<body>
+    <div class="update-btn-container">
+        <a href="{{ url_for('update_students') }}">
+            <button type="button" class="update-btn">Update Students</button>
+        </a>
+    </div>
+    <div class="container center-container">
+        <form method="post" class="company-select-form">
+            <label for="company_name"><strong>Select Company:</strong></label>
+            <select name="company_name" id="company_name" onchange="this.form.submit()">
+                {% for name in company_names %}
+                    <option value="{{ name }}" {% if name == company_name %}selected{% endif %}>{{ name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <h2>Eligible Students for {{ company_name }}</h2>
+        {% if students %}
+        <table>
+            <tr>
+                {% for col in columns %}
+                <th>{{ col.replace('_', ' ').title() }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in students %}
+            <tr>
+                {% for item in row %}
+                <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <div class="no-data-message">
+                No eligible students found for {{ company_name }}.
+            </div>
+        {% endif %}
+    </div>
+    <div class="exit-btn-container">
+        <a href="{{ url_for('logout') }}" class="exit-btn">Exit</a>
+    </div>
+</body>
+</html>

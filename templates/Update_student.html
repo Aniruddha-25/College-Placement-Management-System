@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Students</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Company.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Human_Resource.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Update_student.css') }}">
+
+</head>
+<body>
+    <div class="container center-container">
+        <div class="search-form-container">
+            <form method="get" class="search-form">
+                <input type="text" name="student_id" class="search-input" placeholder="Search by Student ID (USN)" value="{{ request.args.get('student_id', '') }}">
+                <div class="button-side-container">
+                    <button type="submit" class="search-btn">Search</button>
+                    <a href="{{ url_for('update_students', branch=request.args.get('branch', '')) }}" class="clear-btn">Clear</a>
+                </div>
+            </form>
+        </div>
+        <div class="student-table-container">
+            <h2>All Students{% if branch_name %} - {{ branch_name }}{% endif %}</h2>
+            {% if students %}
+            <table>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Branch</th>
+                    <th>Batch</th>
+                    <th>Backlog</th>
+                    <th>Backlog History</th>
+                    <th>CGPA</th>
+                    <th>Status</th>
+                    <th>Placement Status</th>
+                    <th>Actions</th> 
+                </tr>
+                {% for student in students %}
+                <tr {% if request.args.get('student_id') and student.studentID|lower == request.args.get('student_id').lower() %}class="highlight-row"{% endif %}>
+                    <td>{{ student.studentID }}</td>
+                    <td>{{ student.student_name }}</td>
+                    <td>{{ student.student_branch }}</td>
+                    <td>{{ student.student_batch }}</td>
+                    <td>{{ student.student_backlog }}</td>
+                    <td>{{ student.student_backlog_history }}</td>
+                    <td>{{ student.student_cgpa }}</td>
+                    <td>{{ student.student_status }}</td>
+                    <td>{{ student.placement_status }}</td>
+                    <td>
+                      <div class="action-buttons">
+                        <form action="{{ url_for('mark_placed') }}" method="post" style="display:inline;">
+                          <input type="hidden" name="student_id" value="{{ student.studentID }}">
+                          <button type="submit" class="btn btn-success btn-sm">Placed</button>
+                        </form>
+                        <form action="{{ url_for('delete_student') }}" method="post" style="display:inline;">
+                          <input type="hidden" name="student_id" value="{{ student.studentID }}">
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?');">Delete</button>
+                        </form>
+                      </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <div class="no-data-message">
+                    No students found{% if request.args.get('student_id') %} for ID "{{ request.args.get('student_id') }}"{% endif %}.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="top-right-btn">
+        <a href="{{ url_for('hr_eligible') }}" class="back-btn">Back</a>
+    </div>
+    <div class="exit-btn-container">
+    <a href="{{ url_for('logout') }}" class="exit-btn">Exit</a>
+</div>
+    
+</div>
+</body>
+</html>

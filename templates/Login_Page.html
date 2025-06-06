@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Login_Page.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container_Login_page">
+      <div class="login-flex-wrapper">
+        <div class="gif-side">
+          <img
+            src="{{ url_for('static', filename='Data/Placement Design.gif') }}"
+            alt="Welcome GIF"
+            class="login-gif"
+          />
+        </div>
+
+        <div class="form-side">
+          <div class="login-title-with-logo">
+            <div class="logo-circle-rotate">
+              <img
+                src="{{ url_for('static', filename='Data/Person.avif') }}"
+                alt="Logo"
+                class="login-logo"
+              />
+            </div>
+            <span class="login-title-text">Login</span>
+          </div>
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %}
+          <ul style="width: 100%; padding: 0; list-style: none">
+            {% for category, message in messages %}
+            <li style="color: #e53935; font-weight: 500; margin-bottom: 8px">
+              {{ message }}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <form method="post" autocomplete="off">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              autofocus
+            />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

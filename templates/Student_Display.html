@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Display</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Student_Display.css') }}"
+    />
+  </head>
+  <body>
+    <div style="display: flex; justify-content: flex-end; margin: 20px">
+      <a href="{{ url_for('student_dashboard') }}">
+        <button type="button" class="display-btn">
+          Form
+        </button>
+      </a>
+    </div>
+    <div class="container">
+      <h2>Student Display Table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Batch</th>
+            <th>Gradute Year</th>
+            <th>Backlogs</th>
+            <th>Backlog History</th>
+            <th>CGPA</th>
+            <th>Status</th>
+            <th>Placement</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="exit-btn-container">
+      <a href="{{ url_for('logout') }}" class="exit-btn">Exit</a>
+    </div>
+  </body>
+</html>
