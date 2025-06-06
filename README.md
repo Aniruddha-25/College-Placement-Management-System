@@ -47,11 +47,23 @@ A web-based application built using Flask and PostgreSQL to streamline college p
 
       * Update database credentials in Login_Page.py accordingly.
 
-5) Run the Python File
-    ````
-    python Login_Page.py
-    ````
-6) Open your browser and visit
+5) Run these Python Files By Order
+     * To Create Login Id and Password Database.
+       
+        ````
+          python Create_Table.py
+         ````
+    * To Enter Data inside Login Id and Password Database.
+       
+         ````
+          python Data Entry.py
+        ````
+    * To Run the the Program.
+       
+        ````
+        python Login_Page.py
+        ````
+7) Open your browser and visit
     ````
     http://localhost:5001
     ````
