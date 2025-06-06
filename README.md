@@ -37,17 +37,19 @@ A web-based application built using Flask and PostgreSQL to streamline college p
 1) Clone the repository.
 
 2) Install required packages
+
+   
+   ````
+   pip install flask psycopg2
     ````
-     pip install flask psycopg2
-    ````
-3) Install PostgreSQL
-4) Set up the database
+4) Install PostgreSQL
+5) Set up the database
 
       * Create a PostgreSQL database named user_login_page.
 
       * Update database credentials in Login_Page.py accordingly.
 
-5) Run these Python Files By Order
+6) Run these Python Files By Order
      * To Create Login Id and Password Database.
        
         ````
