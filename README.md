@@ -1,3 +1,9 @@
+
+
+https://github.com/user-attachments/assets/597594f7-ea57-41ce-a7be-0f4c594e3eca
+
+
+
 # College Placement Management System
 
 A web-based application built using Flask and PostgreSQL to streamline college placement activities. This system helps manage student, company, and placement-related data efficiently through role-based dashboards for Admin, Company, and Student users.
